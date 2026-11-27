@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>界面风格参考 · 个人系统</title>
+  <style>
+    :root{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:#243047;background:#f3f5f9;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,#fff 0,transparent 30%),radial-gradient(circle at 88% 90%,#e4ecf9 0,transparent 35%),#f3f5f9}
+    a{color:inherit}.page{width:min(1120px,calc(100% - 40px));margin:0 auto;padding:58px 0 40px}.eyebrow{font-size:12px;letter-spacing:.18em;color:#64748b;font-weight:700}.hero{display:flex;justify-content:space-between;gap:30px;align-items:end;margin:12px 0 32px}h1{font-size:clamp(30px,5vw,50px);letter-spacing:-.04em;margin:0 0 12px}.hero p{margin:0;color:#64748b;line-height:1.8}.note{padding:10px 14px;border:1px solid #dce3ed;border-radius:12px;color:#64748b;font-size:13px;white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{position:relative;display:block;text-decoration:none;background:#fff;border:1px solid #e2e8f0;border-radius:22px;overflow:hidden;box-shadow:0 12px 30px rgba(30,41,59,.06);transition:.2s transform,.2s box-shadow}.card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(30,41,59,.12)}.preview{height:205px;padding:22px;display:grid;grid-template-columns:18px 1fr;gap:14px}.side{border-radius:6px;background:currentColor;opacity:.16}.mock{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mock span{border-radius:9px;background:currentColor;opacity:.09;border:1px solid currentColor}.mock span:nth-child(2){opacity:.16}.mock span:nth-child(3){opacity:.06}.fresh{color:#5271ff;background:#eef2ff}.warm{color:#b57655;background:#f7eee5}.dark{color:#67e8c3;background:#111827}.body{padding:22px}.index{font-size:11px;letter-spacing:.14em;color:#94a3b8}.body h2{font-size:21px;margin:8px 0}.body p{font-size:13px;line-height:1.7;color:#7b8494;min-height:44px;margin:0 0 18px}.open{font-size:13px;font-weight:700}.foot{text-align:center;color:#94a3b8;font-size:12px;margin-top:28px;line-height:1.8}@media(max-width:800px){.grid{grid-template-columns:1fr}.hero{display:block}.note{display:inline-block;margin-top:20px}.preview{height:160px}.page{padding-top:34px}.body p{min-height:0}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="eyebrow">OPL · UI STYLE STUDIES</div>
+    <header class="hero">
+      <div><h1>选择你的今天。</h1><p>三种风格，同一份任务，同一套交互。<br>打开页面，临时新增或拖动任务，感受哪一种更适合你。</p></div>
+      <div class="note">无需安装 · 本地运行 · 模拟数据</div>
+    </header>
+    <section class="grid" aria-label="三种界面风格">
+      <a class="card" href="fresh.html">
+        <div class="preview fresh"><div class="side"></div><div class="mock"><span></span><span></span><span></span><span></span></div></div>
+        <div class="body"><div class="index">STYLE 01</div><h2>清爽效率风</h2><p>浅色、清晰、紧凑。弱化装饰，让四象限与下一步行动成为视觉中心。</p><div class="open">打开 Demo →</div></div>
+      </a>
+      <a class="card" href="warm.html">
+        <div class="preview warm"><div class="side"></div><div class="mock"><span></span><span></span><span></span><span></span></div></div>
+        <div class="body"><div class="index">STYLE 02</div><h2>温暖生活风</h2><p>柔和暖色、自然圆角与轻松留白，更像一位安静的生活伙伴。</p><div class="open">打开 Demo →</div></div>
+      </a>
+      <a class="card" href="dark.html">
+        <div class="preview dark"><div class="side"></div><div class="mock"><span></span><span></span><span></span><span></span></div></div>
+        <div class="body"><div class="index">STYLE 03</div><h2>深色控制台风</h2><p>深色背景、高信息密度与清晰状态色，突出专业、专注的掌控感。</p><div class="open">打开 Demo →</div></div>
+      </a>
+    </section>
+    <footer class="foot">每个 Demo 都可独立打开，数据只保留在当前页面会话中。<br>选择方向后，再进入完整 React + TypeScript 原型。</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="个人系统今天四象限界面风格 Demo">
+  <title>深色控制台风 · 今天四象限</title>
+  <link rel="stylesheet" href="assets/demo.css">
+  <script defer src="assets/demo.js"></script>
+</head>
+<body data-theme="dark">
+  <a class="skip-link" href="#quadrants">跳到任务四象限</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="index.html" aria-label="返回风格选择">
+        <span class="brand-mark">序</span><span><strong>个人系统</strong><small>PERSONAL OS</small></span>
+      </a>
+      <div class="style-chip"><span></span>深色控制台风 · DEMO</div>
+      <nav class="nav-list">
+        <button class="nav-item active" type="button"><span class="nav-icon">今</span><span>今天</span><span class="nav-dot"></span></button>
+        <button class="nav-item" type="button" data-preview="模块规划"><span class="nav-icon">模</span><span>模块规划</span></button>
+        <button class="nav-item" type="button" data-preview="阶段目标"><span class="nav-icon">标</span><span>阶段目标</span></button>
+        <button class="nav-item" type="button" data-preview="日历"><span class="nav-icon">历</span><span>日历</span></button>
+        <button class="nav-item" type="button" data-preview="每日记录"><span class="nav-icon">记</span><span>每日记录</span></button>
+        <button class="nav-item" type="button" data-preview="文档库"><span class="nav-icon">文</span><span>文档库</span></button>
+        <button class="nav-item" type="button" data-preview="财务"><span class="nav-icon">财</span><span>财务</span></button>
+      </nav>
+      <div class="sidebar-note"><span class="pulse"></span><div><strong>本地风格实验</strong><small>无后端 · 无 AI · 模拟数据</small></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>工作台</span><b>/</b><strong>今天</strong></div>
+        <a class="switch-style" href="index.html"><span>◐</span> 更换风格</a>
+      </header>
+
+      <section class="today-heading">
+        <div><p class="date-line">2026年11月27日 · 星期五</p><h1>今天，从一个小动作开始。</h1><p class="subtitle">不用等待状态，先完成启动动作。</p></div>
+        <div class="heading-actions"><button class="button button-secondary" type="button" data-preview="早间计划">早间计划</button><button class="button button-primary" id="open-create" type="button"><span>＋</span> 临时任务</button></div>
+      </section>
+
+      <section class="day-summary" aria-label="今日摘要">
+        <div class="summary-item"><span class="summary-icon">今</span><div><small>今日任务</small><strong id="today-count">0</strong></div></div>
+        <div class="summary-divider"></div>
+        <div class="summary-item"><span class="summary-icon">动</span><div><small>进行中</small><strong id="doing-count">0</strong></div></div>
+        <div class="summary-divider"></div>
+        <div class="summary-item"><span class="summary-icon">锁</span><div><small>手动归类</small><strong id="locked-count">0</strong></div></div>
+        <p class="summary-hint">任务由模块规划生成，四象限按属性自动展示</p>
+      </section>
+
+      <div class="workspace">
+        <section class="quadrant-section" id="quadrants" aria-labelledby="quadrant-title">
+          <div class="section-heading"><div><h2 id="quadrant-title">任务四象限</h2><p>拖动卡片可手动归类，恢复自动前不会被时间规则覆盖。</p></div><div class="legend"><span><i class="today-legend"></i>今天</span><span>▣ 已锁定</span></div></div>
+          <div class="quadrant-grid">
+            <section class="quadrant q-important-urgent" data-quadrant="important-urgent"><header><div><span class="quadrant-number">01</span><h3>重要且紧急</h3></div><span class="quadrant-count">0</span></header><p class="quadrant-caption">优先处理 · 立即行动</p><div class="task-list" data-dropzone="important-urgent"></div></section>
+            <section class="quadrant q-important-not" data-quadrant="important-not"><header><div><span class="quadrant-number">02</span><h3>重要不紧急</h3></div><span class="quadrant-count">0</span></header><p class="quadrant-caption">持续积累 · 主动规划</p><div class="task-list" data-dropzone="important-not"></div></section>
+            <section class="quadrant q-urgent-not" data-quadrant="urgent-not"><header><div><span class="quadrant-number">03</span><h3>紧急不重要</h3></div><span class="quadrant-count">0</span></header><p class="quadrant-caption">快速处理 · 减少打扰</p><div class="task-list" data-dropzone="urgent-not"></div></section>
+            <section class="quadrant q-neither" data-quadrant="neither"><header><div><span class="quadrant-number">04</span><h3>不重要不紧急</h3></div><span class="quadrant-count">0</span></header><p class="quadrant-caption">以后再说 · 控制投入</p><div class="task-list" data-dropzone="neither"></div></section>
+          </div>
+        </section>
+
+        <aside class="insights" aria-label="今日辅助信息">
+          <section class="insight-card goal-card"><div class="card-eyebrow">CURRENT MILESTONE</div><h2>本月主阶段目标</h2><div class="goal-module">健身 · 家庭训练</div><p>建立稳定训练节奏，完成本月 12 次训练。</p><div class="progress-label"><span>执行进度</span><strong>7 / 12</strong></div><div class="progress-track"><span></span></div><small>执行数据与身体效果分开记录，月末手动验收。</small></section>
+          <section class="insight-card action-card"><div class="action-symbol">↳</div><div><div class="card-eyebrow">LOW-FRICTION START</div><h2>启动动作</h2></div><p>把任务缩小为一个具体的身体第一步。</p><blockquote>“先换上运动服。”</blockquote><small>字段允许留空，模块可预填，你可以随时修改。</small></section>
+          <section class="insight-card review-card"><div><h2>晚间复盘</h2><p>处理延期与放弃，留下今天的记录。</p></div><button class="text-button" type="button" data-preview="晚间复盘">进入复盘 →</button></section>
+        </aside>
+      </div>
+      <footer class="demo-footer">风格参考 Demo · 数据仅用于展示，刷新页面后恢复初始状态</footer>
+    </main>
+  </div>
+
+  <dialog class="task-dialog" id="task-dialog" aria-labelledby="dialog-title">
+    <form id="task-form">
+      <div class="dialog-header"><div><span class="card-eyebrow">QUICK CAPTURE</span><h2 id="dialog-title">新增临时任务</h2></div><button class="icon-button" type="button" data-close="task-dialog" aria-label="关闭">×</button></div>
+      <p class="dialog-intro">先记录最少信息，高级规划属性可按需调整。</p>
+      <label class="field"><span>任务名称 <b>必填</b></span><input id="task-name" name="name" required maxlength="60" placeholder="例如：整理桌面"></label>
+      <div class="field-row"><label class="field"><span>所属模块</span><select name="module" id="task-module"><option value="临时事务">临时事务</option><option value="日常生活">日常生活</option><option value="健身">健身</option><option value="学习 · AI绘画">学习 · AI绘画</option><option value="开发 · 效率工具">开发 · 效率工具</option><option value="游戏 · 王者荣耀">游戏 · 王者荣耀</option><option value="财务">财务</option></select></label><label class="field"><span>计划日期</span><input type="date" name="date" id="task-date" value="2026-11-27"></label></div>
+      <div class="field-row"><label class="field"><span>计划时间</span><input type="time" name="time" value="19:00"></label><label class="field"><span>启动动作 <em>可留空</em></span><input name="startAction" id="task-action" placeholder="例如：先走到书桌前"></label></div>
+      <details class="advanced-fields"><summary>高级选项：重要与紧急程度</summary><div class="field-row"><label class="field"><span>重要程度</span><select name="important" id="task-important"><option value="true">重要</option><option value="false">不重要</option></select></label><label class="field"><span>紧急程度</span><select name="urgent"><option value="false">不紧急</option><option value="true">紧急</option></select></label></div><p>模块提供默认值，手动保存后锁定象限；未调整高级选项则自动归类。</p></details>
+      <div class="dialog-actions"><button class="button button-secondary" type="button" data-close="task-dialog">取消</button><button class="button button-primary" type="submit">加入四象限</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="task-dialog detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-header"><div><span class="card-eyebrow">TASK DETAIL</span><h2 id="detail-title">任务详情</h2></div><button class="icon-button" type="button" data-close="detail-dialog" aria-label="关闭">×</button></div>
+    <div id="detail-content"></div>
+    <div class="detail-actions"><button class="button button-secondary" id="unlock-task" type="button">恢复自动归类</button><button class="button button-primary" type="button" data-close="detail-dialog">完成</button></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
