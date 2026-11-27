@@ -48,7 +48,7 @@ git push
 
 提交信息建议前缀：`feat:` 新功能、`fix:` 修复、`docs:` 文档、`chore:` 杂项、`refactor:` 重构。
 
-## 三、常用排查
+## 四、常用排查
 
 | 场景 | 命令 |
 | --- | --- |
@@ -60,8 +60,56 @@ git push
 | 查看与远端差异 | `git diff origin/main..HEAD` |
 | 推送被拒（远端已更新） | `git pull --rebase` 后重新 `git push` |
 
-## 四、待补充
+## 三、系统代理与 Git 代理
+
+### 2026-11-27 实际问题与结论
+
+**现象**：系统已开启代理，但 `git push` 连续出现 `Failed to connect to github.com:443`。
+
+**原因**：Windows 用户代理为 `127.0.0.1:7897`，Git 没有 `http.proxy` 或代理环境变量，因此仍在直连。系统代理开启不等于 Git 自动走代理。
+
+**验证**：通过 `git -c http.proxy=http://127.0.0.1:7897 ls-remote --heads origin main mjj` 成功读取远程分支。
+
+**处理**：仅为当前仓库设置代理，不修改全局 Git 配置：
+
+```powershell
+git config --local http.proxy http://127.0.0.1:7897
+git ls-remote --heads origin
+```
+
+代理端口变化时更新该值；不再需要时执行 `git config --unset http.proxy`。优先使用系统实际代理地址和端口，不凭经验写死其他机器的端口。
+
+### 日常检查顺序
+
+```powershell
+# 查看 Git 是否配置代理
+git config --show-origin --get-regexp "^(http|https)\..*proxy$|^http\.proxy$|^https\.proxy$"
+
+# 查看 Windows 用户代理（PowerShell）
+Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" |
+  Select-Object ProxyEnable, ProxyServer, AutoConfigURL
+
+# 使用临时代理验证，不改配置
+git -c http.proxy=http://127.0.0.1:7897 ls-remote --heads origin
+```
+
+## 五、将工作分支合并到主分支
+
+合并前先确认工作区干净并获取远程最新状态，不直接覆盖远程 main。若工作分支包含 main 的全部提交，优先使用快进合并：
+
+```powershell
+git fetch origin
+git switch main
+git pull --ff-only origin main
+git merge --ff-only mjj
+git push origin main
+git switch mjj
+```
+
+如果远程 main 有新提交或分支已经分叉，先检查差异，再选择正常合并或 rebase；不能使用强制推送覆盖。合并后通过 `git log --oneline --graph --decorate -10`、`git status --branch` 和远程分支哈希核对结果。
+
+## 六、待补充
 - [ ] `.gitignore` 模板（Python / Node / IDE 缓存）
-- [ ] 分支策略（main 保护 + feature 分支 + PR 流程）
+- [ ] 分支保护、PR 审查与需要非快进合并时的流程（普通快进合并见第五节）
 - [ ] PAT（Personal Access Token）申请与配置步骤
 - [ ] 大文件与 Git LFS 使用规则
